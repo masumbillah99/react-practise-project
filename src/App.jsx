@@ -84,7 +84,7 @@ export function StudentsTable() {
       name: "Morjina Akter",
       class: "Class One",
       scores: "A",
-      percentage: 86,
+      percentage: 100,
     },
     {
       id: 6,
@@ -179,14 +179,14 @@ export function StudentsTable() {
     },
     {
       id: 19,
-      name: "Johnson",
+      name: "Abul Kalam",
       class: "Class Two",
       scores: "A+",
       percentage: 86,
     },
     {
       id: 20,
-      name: "Jack Brown",
+      name: "Riyad Hossen",
       class: "Class Two",
       scores: "A",
       percentage: 100,
@@ -205,7 +205,7 @@ export function StudentsTable() {
   // console.log(organizedData);
 
   return (
-    <section className="bg-[#172227] py-24 lg:pt-[120px] lg:pb-28">
+    <section className="bg-[#172227] py-24 lg:pt-[120px] lg:pb-10">
       <div className="max-w-screen-xl mx-auto">
         <div className="flex flex-col items-center pb-20">
           <h3 className="text-3xl lg:text-[40px] font-bold text-white mb-9">
@@ -213,37 +213,35 @@ export function StudentsTable() {
           </h3>
 
           {/* search box */}
-          <form>
-            <div className="flex">
-              <div className="relative overflow-hidden text-gray-50 md:min-w-[380px] lg:min-w-[440px] rounded-[63px]">
-                <input
-                  type="search"
-                  className="z-20 block w-full bg-white px-4 py-2.5 pr-10 focus:outline-none rounded-[63px] placeholder:text-neutral-400 text-neutral-800"
-                  placeholder="Search by Student "
-                  required
-                />
-                <button
-                  type="submit"
-                  className="absolute right-0 inline-flex items-center justify-center w-10 top-0 h-full rounded-e-lg text-neutral-800"
+          <form className="flex">
+            <div className="relative overflow-hidden text-gray-50 md:min-w-[380px] lg:min-w-[440px] rounded-[63px]">
+              <input
+                type="search"
+                className="z-20 block w-full bg-white px-4 py-2.5 pr-10 focus:outline-none rounded-[63px] placeholder:text-neutral-400 text-neutral-800"
+                placeholder="Search by Student "
+                required
+              />
+              <button
+                type="submit"
+                className="absolute right-0 inline-flex items-center justify-center w-10 top-0 h-full rounded-e-lg text-neutral-800"
+              >
+                <svg
+                  className="h-4 w-4"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 20 20"
                 >
-                  <svg
-                    className="h-4 w-4"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                    />
-                  </svg>
-                  <span className="sr-only">Search</span>
-                </button>
-              </div>
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                  />
+                </svg>
+                <span className="sr-only">Search</span>
+              </button>
             </div>
           </form>
         </div>
@@ -305,15 +303,29 @@ export function StudentsTable() {
           </table>
         </div>
       </div>
+
+      <Footer></Footer>
     </section>
+  );
+}
+
+export function Footer() {
+  return (
+    <footer class="mt-32">
+      <div class="mx-auto">
+        <p class="text-center text-lg text-gray-500">
+          Copyright ©2024 | All rights reserved by Learn with Sumit
+        </p>
+      </div>
+    </footer>
   );
 }
 
 export default function App() {
   return (
-    <div className="">
+    <>
       <Header></Header>
       <StudentsTable></StudentsTable>
-    </div>
+    </>
   );
 }
