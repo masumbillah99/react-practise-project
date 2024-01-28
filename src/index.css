@@ -3,6 +3,15 @@
 @tailwind utilities;
 
 /* custom styles */
+
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 1.25rem;
+  padding-left: 1.25rem;
+}
+
 @layer components {
   .animate-updown {
     animation-name: animate-updownAnim;

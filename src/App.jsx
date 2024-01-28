@@ -5,9 +5,9 @@ import { useState } from "react";
 
 export function Hero() {
   return (
-    <div className="pt-36 pb-20 md:-mt-[118px]">
-      <div className="grid md:grid-cols-2 items-center w-10/12 mx-auto">
-        <div className="text-white">
+    <div className="pt-5 md:pt-36 pb-20 md:-mt-[118px]">
+      <div className="grid md:grid-cols-2 items-center md:w-9/12 lg:w-10/12 mx-auto">
+        <div className="text-white order-1 md:order-none max-w-[300px] md:max-w-full  mx-auto md:mx-0">
           <h3 className="text-4xl lg:text-[56px] font-bold leading-[1.1] mb-8">
             The Future of Learning starts with students at the center
           </h3>
@@ -15,13 +15,13 @@ export function Hero() {
             Learn More
           </button>
         </div>
-        <div>
+        <div className="max-w-[300px] md:max-w-full mx-auto md:mx-0">
           <img
             className="md:order-2 object-cover ml-auto animate-updown"
             src={hero}
-            width="500px"
-            height="500px"
             alt="Banner"
+            width="500"
+            height="500"
           />
         </div>
       </div>
@@ -33,9 +33,9 @@ export function Header() {
   return (
     <section className="bg-[radial-gradient(50%_50%_at_50%_50%,#17956D_0%,#0F684C_100%)] pt-7">
       <div className="max-w-screen-2xl mx-auto">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center px-5 md:px-10 lg:px-10 xl:px-0 md:pb-10">
           <img src={logo} alt="" className="block max-w-full h-10" />
-          <button className="block bg-[#172227] text-white border-none rounded-3xl px-6 py-2 font-bold">
+          <button className="block bg-[#172227] text-white border-none rounded-3xl px-5 py-2 font-medium">
             Get Admission
           </button>
         </div>
@@ -205,7 +205,7 @@ export function StudentsTable() {
   // console.log(organizedData);
 
   return (
-    <section className="bg-[#172227] py-24 lg:pt-[120px] lg:pb-10">
+    <section className="bg-[#172227] py-14 lg:pt-[120px] lg:pb-10">
       <div className="max-w-screen-xl mx-auto">
         <div className="flex flex-col items-center pb-20">
           <h3 className="text-3xl lg:text-[40px] font-bold text-white mb-9">
@@ -248,7 +248,7 @@ export function StudentsTable() {
 
         {/* student table data */}
 
-        <div className="max-w-[848px] mx-auto overflow-auto">
+        <div className="md:max-w-[728px] lg:max-w-[848px] mx-4 md:mx-auto overflow-auto">
           <table className="w-full text-white">
             <thead>
               <tr className="border-b border-[#FFFFFF0D]">
@@ -269,7 +269,7 @@ export function StudentsTable() {
               {Object.entries(organizedData).map(([classKey, students]) => (
                 <>
                   <tr className="bg-white/5">
-                    <td className="p-5 text-sm md:text-xl" colspan="4">
+                    <td className="p-5 text-sm md:text-xl" colSpan="4">
                       {classKey}
                     </td>
                   </tr>
@@ -304,6 +304,7 @@ export function StudentsTable() {
         </div>
       </div>
 
+      {/* footer component */}
       <Footer></Footer>
     </section>
   );
@@ -311,9 +312,9 @@ export function StudentsTable() {
 
 export function Footer() {
   return (
-    <footer class="mt-32">
-      <div class="mx-auto">
-        <p class="text-center text-lg text-gray-500">
+    <footer className="mt-32">
+      <div className="mx-auto">
+        <p className="text-center text-lg text-gray-500">
           Copyright ©2024 | All rights reserved by Learn with Sumit
         </p>
       </div>
