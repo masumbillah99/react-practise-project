@@ -234,9 +234,9 @@ export function StudentsTable() {
                 >
                   <path
                     stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
                   />
                 </svg>
@@ -275,7 +275,7 @@ export function StudentsTable() {
                   </tr>
 
                   {students.map((stu, index) => (
-                    <tr className="border-b border-[#7ECEB529]">
+                    <tr className="border-b border-[#7ECEB529]" key={index}>
                       <td className="p-5 text-sm md:text-xl">{index + 1}</td>
                       <td className="p-5 text-sm md:text-xl">
                         <div className="flex space-x-3 items-center">
