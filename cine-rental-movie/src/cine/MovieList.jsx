@@ -1,50 +1,15 @@
-const MovieList = () => {
-  return (
-    <div class="content">
-      <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-7">
-        <figure class="p-4 border border-black/10 shadow-sm dark:border-white/10 rounded-xl">
-          <img class="w-full object-cover" src="./assets/movie-1.png" alt="" />
-          <figcaption class="pt-4">
-            <h3 class="text-xl mb-1">Iron Man</h3>
-            <p class="text-[#575A6E] text-sm mb-2">Action/Adventure/Sci-fi</p>
-            <div class="flex items-center space-x-1 mb-5">
-              <img src="./assets/star.svg" width="14" height="14" alt="" />
-              <img src="./assets/star.svg" width="14" height="14" alt="" />
-              <img src="./assets/star.svg" width="14" height="14" alt="" />
-              <img src="./assets/star.svg" width="14" height="14" alt="" />
-              <img src="./assets/star.svg" width="14" height="14" alt="" />
-            </div>
-            <a
-              class="bg-primary rounded-lg py-2 px-5 flex items-center justify-center gap-2 text-[#171923] font-semibold text-sm"
-              href="#"
-            >
-              <img src="./assets/tag.svg" alt="" />
-              <span>$100 | Add to Cart</span>
-            </a>
-          </figcaption>
-        </figure>
+import { getAllMovies } from "../data/movies";
+import MovieCard from "./MovieCard";
 
-        <figure class="p-4 border border-black/10 shadow-sm dark:border-white/10 rounded-xl">
-          <img class="w-full object-cover" src="./assets/movie-1.png" alt="" />
-          <figcaption class="pt-4">
-            <h3 class="text-xl mb-1">Iron Man</h3>
-            <p class="text-[#575A6E] text-sm mb-2">Action/Adventure/Sci-fi</p>
-            <div class="flex items-center space-x-1 mb-5">
-              <img src="./assets/star.svg" width="14" height="14" alt="" />
-              <img src="./assets/star.svg" width="14" height="14" alt="" />
-              <img src="./assets/star.svg" width="14" height="14" alt="" />
-              <img src="./assets/star.svg" width="14" height="14" alt="" />
-              <img src="./assets/star.svg" width="14" height="14" alt="" />
-            </div>
-            <a
-              class="bg-primary rounded-lg py-2 px-5 flex items-center justify-center gap-2 text-[#171923] font-semibold text-sm"
-              href="#"
-            >
-              <img src="./assets/tag.svg" alt="" />
-              <span>$100 | Add to Cart</span>
-            </a>
-          </figcaption>
-        </figure>
+const MovieList = () => {
+  const movies = getAllMovies();
+
+  return (
+    <div className="content">
+      <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-7">
+        {movies.map((movie) => (
+          <MovieCard key={movie.id} movie={movie} />
+        ))}
       </div>
     </div>
   );
