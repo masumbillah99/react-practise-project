@@ -1,6 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+
+  /**
+   * tell your application which mode you are using (light/dark)
+   * you should toggle them so make a context
+   */
+  darkMode: "class",
+
   theme: {
     extend: {
       container: {

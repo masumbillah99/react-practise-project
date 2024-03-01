@@ -17,9 +17,7 @@ const Header = () => {
 
   return (
     <header>
-      {showCart && (
-        <CartDetails cartData={cartData} onClose={() => setShowCart(false)} />
-      )}
+      {showCart && <CartDetails onClose={() => setShowCart(false)} />}
 
       <nav className="container flex items-center justify-between space-x-10 py-6">
         <button>

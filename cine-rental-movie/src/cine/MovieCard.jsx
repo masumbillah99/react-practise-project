@@ -57,7 +57,7 @@ const MovieCard = ({ movie }) => {
               onClick={(evt) => handleAddToCart(evt, movie)}
             >
               <img src={tagImg} alt="" />
-              <span>{movie.price} | Add to Cart</span>
+              <span>${movie.price} | Add to Cart</span>
             </button>
           </figcaption>
         </a>
