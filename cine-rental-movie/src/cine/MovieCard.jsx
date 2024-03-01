@@ -3,14 +3,31 @@ import tagImg from "../assets/tag.svg";
 import Rating from "./Rating";
 import { useState } from "react";
 import MovieDetailsModal from "./MovieDetailsModal";
+import { useContext } from "react";
+import { MovieContext } from "../context";
 
 const MovieCard = ({ movie }) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const { cartData, setCartData } = useContext(MovieContext);
 
   const handleModalOpen = (movie) => {
     setSelectedMovie(movie);
     setShowModal(true);
+  };
+
+  const handleAddToCart = (evt, movie) => {
+    evt.stopPropagation();
+
+    // condition for movie duplication in cart
+    const existingMovie = cartData?.find((item) => item.id === movie.id);
+    if (!existingMovie) {
+      setCartData([...cartData, movie]);
+    } else {
+      console.error(
+        `The movie ${movie.title} has been added to the cart alreday`
+      );
+    }
   };
 
   return (
@@ -19,6 +36,7 @@ const MovieCard = ({ movie }) => {
         <MovieDetailsModal
           movie={selectedMovie}
           onClose={() => setShowModal(false)}
+          onCartAdd={handleAddToCart}
         />
       )}
       <figure className="p-4 border border-black/10 shadow-sm dark:border-white/10 rounded-xl">
@@ -34,7 +52,10 @@ const MovieCard = ({ movie }) => {
             <div className="flex items-center space-x-1 mb-5">
               <Rating value={movie.rating} />
             </div>
-            <button className="bg-primary rounded-lg py-2 px-5 flex items-center justify-center gap-2 text-[#171923] font-semibold text-sm">
+            <button
+              className="bg-primary rounded-lg py-2 px-5 flex items-center justify-center gap-2 text-[#171923] font-semibold text-sm"
+              onClick={(evt) => handleAddToCart(evt, movie)}
+            >
               <img src={tagImg} alt="" />
               <span>{movie.price} | Add to Cart</span>
             </button>
