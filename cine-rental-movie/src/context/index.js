@@ -5,6 +5,13 @@ import { createContext } from "react";
     sob gula export context akta file a create and export kora jai
 */
 
-const MovieContext = createContext(null);
+/**
+ * Your context Name first letter should be Uppercase
+ * if you don't no what value set in context just pass the (null) value
 
-export { MovieContext };
+*/
+
+const MovieContext = createContext(null);
+const ThemeContext = createContext(null);
+
+export { MovieContext, ThemeContext };

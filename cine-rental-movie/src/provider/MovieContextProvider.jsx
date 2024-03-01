@@ -1,13 +1,19 @@
 import { useState } from "react";
-import { MovieContext } from "../context";
+import { MovieContext, ThemeContext } from "../context";
 
 const MovieContextProvider = ({ children }) => {
   const [cartData, setCartData] = useState([]);
+  const [darkMode, setDarkMode] = useState(true);
 
-  const value = { cartData, setCartData };
+  const movieValue = { cartData, setCartData };
+  const themeValue = { darkMode, setDarkMode };
 
   return (
-    <MovieContext.Provider value={value}>{children}</MovieContext.Provider>
+    <ThemeContext.Provider value={themeValue}>
+      <MovieContext.Provider value={movieValue}>
+        {children}
+      </MovieContext.Provider>
+    </ThemeContext.Provider>
   );
 };
 
