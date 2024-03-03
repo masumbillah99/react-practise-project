@@ -5,12 +5,16 @@ import { useContext } from "react";
 import { MovieContext } from "../context";
 
 const CartDetails = ({ onClose }) => {
-  const { cartData, setCartData } = useContext(MovieContext);
+  const { state, dispatch } = useContext(MovieContext);
 
   // handler for delete cart item
-  const handleDeleteCart = (itemId) => {
-    const filteredItem = cartData.filter((item) => item.id !== itemId);
-    setCartData([...filteredItem]);
+  const handleDeleteCart = (evt, item) => {
+    evt.preventDefault();
+
+    dispatch({
+      type: "REMOVE_FROM_CART",
+      payload: item,
+    });
   };
 
   return (
@@ -21,8 +25,8 @@ const CartDetails = ({ onClose }) => {
             Your Carts
           </h2>
           <div className="space-y-8 lg:space-y-12 max-h-[450px] overflow-auto mb-10 lg:mb-14">
-            {cartData.length > 0 ? (
-              cartData.map((movie) => (
+            {state.cartData.length > 0 ? (
+              state.cartData.map((movie) => (
                 <div className="grid grid-cols-[1fr_auto] gap-4" key={movie.id}>
                   <div className="flex items-center gap-4">
                     <img
@@ -45,7 +49,7 @@ const CartDetails = ({ onClose }) => {
                   <div className="flex justify-between gap-4 items-center">
                     <button
                       className="bg-[#D42967] rounded-md p-2 md:px-4 inline-flex items-center space-x-2 text-white"
-                      onClick={() => handleDeleteCart(movie.id)}
+                      onClick={(evt) => handleDeleteCart(evt, movie)}
                     >
                       <img className="w-5 h-5" src={deleteSvg} alt="delete" />
                       <span className="max-md:hidden">Remove</span>

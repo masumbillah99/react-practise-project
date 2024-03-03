@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useReducer, useState } from "react";
 import { MovieContext, ThemeContext } from "../context";
+import { cartReducer, inititalState } from "../reducer/CartReducer";
 
 const MovieContextProvider = ({ children }) => {
-  const [cartData, setCartData] = useState([]);
+  // const [cartData, setCartData] = useState([]);
   const [darkMode, setDarkMode] = useState(true);
+  const [state, dispatch] = useReducer(cartReducer, inititalState);
 
-  const movieValue = { cartData, setCartData };
+  const movieValue = { state, dispatch };
   const themeValue = { darkMode, setDarkMode };
 
   return (
