@@ -31,7 +31,9 @@ const Header = () => {
           <li>
             <button
               className="bg-primary/20 dark:bg-primary/[7%] rounded-lg backdrop-blur-[2px] p-1 inline-block"
-              onClick={() => setDarkMode((darkMode) => !darkMode)}
+              onClick={() => {
+                setDarkMode((darkMode) => !darkMode);
+              }}
             >
               <img src={darkMode ? sun : moon} width="24" height="24" alt="" />
             </button>

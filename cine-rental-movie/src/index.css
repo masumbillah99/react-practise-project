@@ -5,3 +5,17 @@
 .dark {
   @apply bg-[#171923] text-white;
 }
+
+.light {
+  @apply bg-[#FFFFFF] text-black;
+}
+
+/* App.css */
+body {
+  background-color: #ffffff;
+}
+
+/* Dark mode background color */
+body.dark-mode {
+  @apply bg-[#0d1322] text-white;
+}
