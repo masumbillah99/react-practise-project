@@ -3,6 +3,7 @@ import deleteSvg from "../assets/delete.svg";
 import { getImgUrl } from "../utils/cine-utility";
 import { useContext } from "react";
 import { MovieContext } from "../context";
+import { toast } from "react-toastify";
 
 const CartDetails = ({ onClose }) => {
   const { state, dispatch } = useContext(MovieContext);
@@ -14,6 +15,10 @@ const CartDetails = ({ onClose }) => {
     dispatch({
       type: "REMOVE_FROM_CART",
       payload: item,
+    });
+
+    toast.success(`Removed ${item.title} from the cart`, {
+      position: "bottom-left",
     });
   };
 
@@ -59,7 +64,7 @@ const CartDetails = ({ onClose }) => {
               ))
             ) : (
               <p className="text-2xl text-red-500">
-                The Movie Cart is Empty. Added movie in the Cart.
+                The Movie Cart is Empty...!
               </p>
             )}
           </div>
