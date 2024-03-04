@@ -1,8 +1,8 @@
-import { getAllMovies } from "../data/movies";
+// import { getAllMovies } from "../data/movies";
 import MovieCard from "./MovieCard";
 
-const MovieList = () => {
-  const movies = getAllMovies();
+const MovieList = ({ movies }) => {
+  // const movies = getAllMovies();
 
   return (
     <div className="content">

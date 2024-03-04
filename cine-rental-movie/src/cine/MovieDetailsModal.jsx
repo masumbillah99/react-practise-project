@@ -1,5 +1,6 @@
 import tagImg from "../assets/tag.svg";
 import { getImgUrl } from "../utils/cine-utility";
+import Rating from "./Rating";
 
 const MovieDetailsModal = ({ movie, onClose, onCartAdd }) => {
   return (
@@ -19,7 +20,9 @@ const MovieDetailsModal = ({ movie, onClose, onCartAdd }) => {
               <span className="block text-xl text-[#9fa0a4] dark:text-[#575A6E] my-3">
                 {movie.genre}
               </span>
-              <div></div>
+              <div className="flex items-center space-x-1 mb-5">
+                <Rating value={movie.rating} />
+              </div>
             </div>
             <p className="text-base mb-8 lg:mb-16">{movie.description}</p>
             <div className="grid lg:grid-cols-2 gap-2">
