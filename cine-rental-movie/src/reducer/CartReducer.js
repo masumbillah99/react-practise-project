@@ -1,4 +1,7 @@
-const inititalState = { cartData: [] };
+const inititalState = {
+  cartData: [],
+  favoriteData: [],
+};
 
 const cartReducer = (state, action) => {
   switch (action.type) {
@@ -14,6 +17,12 @@ const cartReducer = (state, action) => {
         cartData: state.cartData?.filter(
           (item) => item.id !== action.payload.id
         ),
+      };
+    }
+
+    case "ADD_TO_FAV": {
+      return {
+        favoriteData: [...state.favoriteData, action.payload],
       };
     }
 

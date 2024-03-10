@@ -1,11 +1,14 @@
 import { getImgUrl } from "../utils/cine-utility";
-import tagImg from "../assets/tag.svg";
+// import tagImg from "../assets/tag.svg";
 import Rating from "./Rating";
 import { useState } from "react";
 import MovieDetailsModal from "./MovieDetailsModal";
 import { useContext } from "react";
 import { MovieContext } from "../context";
 import { toast } from "react-toastify";
+import { IoMdCart } from "react-icons/io";
+// import { FaBookmark } from "react-icons/fa";
+import { MdFavorite } from "react-icons/md";
 
 const MovieCard = ({ movie }) => {
   const [showModal, setShowModal] = useState(false);
@@ -40,6 +43,31 @@ const MovieCard = ({ movie }) => {
     }
   };
 
+  const handleFavorite = (evt, movie) => {
+    evt.stopPropagation();
+
+    // filter existing movie from the cart
+    const existingMovie = state.favoriteData?.find(
+      (item) => item.id === movie.id
+    );
+    if (!existingMovie) {
+      dispatch({
+        type: "ADD_TO_FAV",
+        payload: { ...movie },
+      });
+      toast.success(`${movie.title} added to the favorite`, {
+        position: "bottom-left",
+      });
+    } else {
+      toast.warn(
+        `The movie ${movie.title} has been added to the favorite already`,
+        {
+          position: "bottom-left",
+        }
+      );
+    }
+  };
+
   return (
     <>
       {showModal && (
@@ -51,11 +79,19 @@ const MovieCard = ({ movie }) => {
       )}
       <figure className="relative p-4 border border-black/10 shadow-sm dark:border-white/10 rounded-xl lg:h-[530px]">
         <a href="#" onClick={() => handleModalOpen(movie)}>
-          <img
-            className="w-full object-cover lg:h-[330px]"
-            src={getImgUrl(movie.cover)}
-            alt={movie.title}
-          />
+          <div className="relative">
+            <img
+              className="w-full object-cover lg:h-[330px]"
+              src={getImgUrl(movie.cover)}
+              alt={movie.title}
+            />
+            <button
+              className="absolute top-1 right-1"
+              onClick={(evt) => handleFavorite(evt, movie)}
+            >
+              <MdFavorite className="text-xl" color={"#E60023"} />
+            </button>
+          </div>
           <figcaption className="pt-4 text-left">
             <h3 className="text-xl mb-1">{movie.title}</h3>
             <p className="text-[#575A6E] text-sm mb-2">{movie.genre}</p>
@@ -66,7 +102,8 @@ const MovieCard = ({ movie }) => {
               className="lg:absolute bottom-3 bg-primary rounded-lg py-2 px-5 flex items-center justify-center gap-2 text-[#171923] font-semibold text-sm"
               onClick={(evt) => handleAddToCart(evt, movie)}
             >
-              <img src={tagImg} alt="" />
+              {/* <img src={tagImg} alt="" /> */}
+              <IoMdCart width="24" height="24" />
               <span>${movie.price} | Add to Cart</span>
             </button>
           </figcaption>

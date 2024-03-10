@@ -8,7 +8,7 @@ const App = () => {
   return (
     <MovieContextProvider>
       <Page />
-      <ToastContainer />
+      <ToastContainer position="bottom-left" />
     </MovieContextProvider>
   );
 };

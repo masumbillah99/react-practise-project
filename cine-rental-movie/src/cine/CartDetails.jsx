@@ -17,9 +17,13 @@ const CartDetails = ({ onClose }) => {
       payload: item,
     });
 
-    toast.success(`Removed ${item.title} from the cart`, {
-      position: "bottom-left",
-    });
+    toast.success(`Removed ${item.title} from the cart`);
+  };
+
+  // handler for checkout
+  const handleCheckout = () => {
+    toast.error("Checkout functionality is under development");
+    return;
   };
 
   return (
@@ -70,7 +74,10 @@ const CartDetails = ({ onClose }) => {
           </div>
 
           <div className="flex items-center justify-end gap-2">
-            <button className="rounded-md p-2 md:px-4 inline-flex items-center space-x-2 bg-primary text-[#171923] text-sm">
+            <button
+              className="rounded-md p-2 md:px-4 inline-flex items-center space-x-2 bg-primary text-[#171923] text-sm"
+              onClick={handleCheckout}
+            >
               <img src={checkoutSvg} width="24" height="24" alt="checkout" />
               <span>Checkout</span>
             </button>

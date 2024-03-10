@@ -44,7 +44,7 @@ const Header = () => {
               onClick={() => setShowCart(true)}
             >
               <img src={shoppingCart} width="24" height="24" alt="" />
-              {state.cartData.length > 0 && (
+              {state?.cartData?.length > 0 && (
                 <span className="rounded-full absolute top-[-12px] left-[28px] bg-[#12cf6f] text-white text-center p-[2px] w-[30px] h-[30px] ">
                   {state.cartData.length}
                 </span>
