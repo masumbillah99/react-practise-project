@@ -14,6 +14,7 @@ export default function WeatherHeadline() {
 
   const { climate, location, temperature, time } = weatherData;
 
+  // util function for show icon based on climate
   function getWeatherIcon(climate) {
     switch (climate) {
       case "Rain":
