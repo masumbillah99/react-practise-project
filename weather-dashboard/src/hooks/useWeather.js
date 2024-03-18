@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { LocationContext } from "../context";
 
 /** Data get korar 2 ta process:
 
@@ -23,8 +24,11 @@ const useWeather = () => {
     latitude: "",
     longitude: "",
   });
-  const [error, setError] = useState(null);
   const [loading, setLoading] = useState({ state: false, message: "" });
+  const [error, setError] = useState(null);
+  const { searchLocation } = useContext(LocationContext);
+
+  console.log(searchLocation);
 
   // asynchronous calls for response
   const fetchWeatherData = async (lat, lon) => {
@@ -40,11 +44,6 @@ const useWeather = () => {
           import.meta.env.VITE_WEATHER_API_KEY
         }&units`
       );
-      // const response = await fetch(
-      //   `https://api.openweathermap.org/data/2.5/weather?${lat}=44.34&${lon}=10.99&appid=${
-      //     import.meta.env.VITE_WEATHER_API_KEY
-      //   }&units=metric`
-      // );
       if (!response.ok) {
         const errMsg = `Fetching weather data failed: ${response.status}`;
         throw new Error(errMsg);

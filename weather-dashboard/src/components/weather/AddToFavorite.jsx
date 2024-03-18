@@ -1,8 +1,7 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { FavoriteContext, WeatherContext } from "../../context";
 import heartIcon from "../../assets/heart.svg";
 import redHeartIcon from "../../assets/heart-red.svg";
-import { useEffect } from "react";
 
 export default function AddToFavorite() {
   const { favorites, addToFavorites, removeFromFavorites } =
