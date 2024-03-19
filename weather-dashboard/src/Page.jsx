@@ -45,11 +45,11 @@ export default function Page() {
     setClimateImage(bgImage);
   }, [weatherData.climate]);
 
-  useEffect(() => {
-    document.body.style.backgroundImage = `url('${climateImage}')`;
-    document.body.style.backgroundSize = "cover";
-    document.body.style.backgroundRepeat = "no-repeat";
-  }, [climateImage]);
+  //   useEffect(() => {
+  //     document.body.style.backgroundImage = `url('${climateImage}')`;
+  //     document.body.style.backgroundSize = "cover";
+  //     document.body.style.backgroundRepeat = "no-repeat";
+  //   }, [climateImage]);
 
   return (
     <>
@@ -59,7 +59,7 @@ export default function Page() {
         </p>
       ) : (
         <div
-          //   style={{ backgroundImage: `url('${climateImage}')` }}
+          //   style={{ backgroundColor: "blue" }}
           className="grid place-items-center h-screen"
         >
           <Header />
