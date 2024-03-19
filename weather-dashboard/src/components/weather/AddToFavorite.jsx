@@ -15,9 +15,8 @@ export default function AddToFavorite() {
     toggleFavorite(found);
   }, []);
 
-  const handleFavorite = () => {
+  function handleFavorite() {
     const found = favorites.find((fav) => fav.location === location);
-
     if (!found) {
       addToFavorites(latitude, longitude, location);
     } else {
@@ -25,7 +24,7 @@ export default function AddToFavorite() {
     }
 
     toggleFavorite(!isFavorite);
-  };
+  }
 
   return (
     <div className="md:col-span-2">

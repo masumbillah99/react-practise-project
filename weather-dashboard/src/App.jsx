@@ -9,9 +9,9 @@ import {
 
 function App() {
   return (
-    <WeatherProvider>
-      <FavoriteProvider>
-        <LocationProvider>
+    <LocationProvider>
+      <WeatherProvider>
+        <FavoriteProvider>
           <div className="grid place-items-center h-screen">
             <Header />
             <main>
@@ -20,9 +20,9 @@ function App() {
               </section>
             </main>
           </div>
-        </LocationProvider>
-      </FavoriteProvider>
-    </WeatherProvider>
+        </FavoriteProvider>
+      </WeatherProvider>
+    </LocationProvider>
   );
 }
 

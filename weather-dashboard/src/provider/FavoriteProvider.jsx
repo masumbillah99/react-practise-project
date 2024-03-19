@@ -5,11 +5,12 @@ export default function FavoriteProvider({ children }) {
   const [favorites, setFavorites] = useLocalStorage("favorites", []);
 
   const addToFavorites = (latitude, longitude, location) => {
-    setFavorites(...favorites, [
+    setFavorites([
+      ...favorites,
       {
-        latitude,
-        longitude,
-        location,
+        latitude: latitude,
+        longitude: longitude,
+        location: location,
       },
     ]);
   };

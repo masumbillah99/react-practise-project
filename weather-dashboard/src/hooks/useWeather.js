@@ -8,6 +8,8 @@ import { LocationContext } from "../context";
     আমাদের কম্পোনেন্টে JSX এ দেখালাম।
 
  * 2. আমরা হুকের মধ্যে ডাটা মডেলিং বা Data structure করতে পারি
+
+  
 */
 
 const useWeather = () => {
@@ -24,11 +26,12 @@ const useWeather = () => {
     latitude: "",
     longitude: "",
   });
-  const [loading, setLoading] = useState({ state: false, message: "" });
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState({ state: false, message: "" });
   const { searchLocation } = useContext(LocationContext);
 
-  console.log(searchLocation);
+  // console.log("from use weather data");
+  // console.log(searchLocation);
 
   // asynchronous calls for response
   const fetchWeatherData = async (lat, lon) => {
@@ -42,7 +45,7 @@ const useWeather = () => {
       const response = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${
           import.meta.env.VITE_WEATHER_API_KEY
-        }&units`
+        }&units=metric`
       );
       if (!response.ok) {
         const errMsg = `Fetching weather data failed: ${response.status}`;
@@ -75,10 +78,14 @@ const useWeather = () => {
   useEffect(() => {
     setLoading({ state: true, message: "Finding location..." });
 
-    navigator.geolocation.getCurrentPosition((position) => {
-      fetchWeatherData(position.coords.latitude, position.coords.longitude);
-    });
-  }, []);
+    if (searchLocation.latitude && searchLocation.longitude) {
+      fetchWeatherData(searchLocation?.latitude, searchLocation?.longitude);
+    } else {
+      navigator.geolocation.getCurrentPosition((position) => {
+        fetchWeatherData(position.coords.latitude, position.coords.longitude);
+      });
+    }
+  }, [searchLocation.latitude, searchLocation.longitude]);
 
   return {
     weatherData,
