@@ -19,7 +19,7 @@ const Page = () => {
   );
 
   // Toggle dark mode class on body element
-  document.body.classList.toggle("dark-mode", darkMode);
+  // document.body.classList.toggle("dark-mode", darkMode);
 
   // animation for sidebar
 
