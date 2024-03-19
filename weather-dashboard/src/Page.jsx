@@ -45,22 +45,18 @@ export default function Page() {
     setClimateImage(bgImage);
   }, [weatherData.climate]);
 
-  //   useEffect(() => {
-  //     document.body.style.backgroundImage = `url('${climateImage}')`;
-  //     document.body.style.backgroundSize = "cover";
-  //     document.body.style.backgroundRepeat = "no-repeat";
-  //   }, [climateImage]);
-
   return (
     <>
       {loading.state ? (
-        <p className="my-auto text-center text-3xl font-semibold text-red-500">
-          {loading.message}
-        </p>
+        <div className="flex bg-gray-300 w-96 mx-auto mt-16">
+          <p className="my-auto text-center text-3xl font-semibold text-red-500">
+            {loading.message}
+          </p>
+        </div>
       ) : (
         <div
-          //   style={{ backgroundColor: "blue" }}
-          className="grid place-items-center h-screen"
+          style={{ backgroundImage: `url('${climateImage}')` }}
+          className="grid place-items-center h-screen bg-no-repeat bg-cover"
         >
           <Header />
           <main>
