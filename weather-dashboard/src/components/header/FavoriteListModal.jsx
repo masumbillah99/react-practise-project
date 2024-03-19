@@ -1,15 +1,22 @@
 import { useContext } from "react";
-import { FavoriteContext } from "../../context";
+import { FavoriteContext, LocationContext } from "../../context";
 
 export default function FavoriteListModal() {
   const { favorites } = useContext(FavoriteContext);
+  const { setSearchLocation } = useContext(LocationContext);
 
   return (
     <div className="max-w-xs py-4 bg-white rounded-md border-gray-500 absolute right-0 top-16 text-black shadow-lg ">
       <h3 className="text-lg font-bold px-4">Favourite Locations</h3>
       <ul className="space-y-2 mt-4 *:py-2 *:px-4 *:cursor-pointer">
         {favorites.length > 0 ? (
-          favorites.map((fav) => <li key={fav.latitude}>{fav.location}</li>)
+          favorites.map((fav) => (
+            <li key={fav.latitude}>
+              <a onClick={() => setSearchLocation({ ...fav })}>
+                {fav.location}
+              </a>
+            </li>
+          ))
         ) : (
           <p>Nothing is added to Favorites</p>
         )}
