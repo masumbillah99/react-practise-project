@@ -1,11 +1,16 @@
 import "./App.css";
-import ProductList from "./components/ProductList";
+import ProductDetails from "./components/products/ProductDetails";
+import ProductList from "./components/products/ProductList";
+import { ProductDetailsProvider } from "./provider";
 
 function App() {
   return (
-    <>
-      <ProductList />
-    </>
+    <ProductDetailsProvider>
+      <div className="flex m-2">
+        <ProductList />
+        <ProductDetails />
+      </div>
+    </ProductDetailsProvider>
   );
 }
 

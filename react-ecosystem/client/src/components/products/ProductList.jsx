@@ -1,14 +1,16 @@
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useContext } from "react";
+import { ProductDetailsContext } from "../../context";
 
-const retrieveProducts = async () => {
-  const res = await axios.get("http://localhost:3000/products");
+const retrieveProducts = async ({ queryKey }) => {
+  const res = await axios.get(
+    `${import.meta.env.VITE_LOCAL_JSON_SERVER}/${queryKey[0]}`
+  );
   return res.data;
 };
 
 const ProductList = () => {
-  const [page, setPage] = useState(1);
   const {
     data: products,
     isLoading,
@@ -16,7 +18,10 @@ const ProductList = () => {
   } = useQuery({
     queryKey: ["products"],
     queryFn: retrieveProducts,
+    retry: false,
   });
+
+  const { setProductId } = useContext(ProductDetailsContext);
 
   if (isLoading) return <div>Fetching products...</div>;
 
@@ -38,10 +43,17 @@ const ProductList = () => {
                 alt={product.title}
               />
               <p className="text-xl my-3">{product.title}</p>
+              <button
+                className="underline text-blue-500 mb-3"
+                onClick={() => setProductId(product.id)}
+              >
+                Show Details
+              </button>
             </li>
           ))}
       </ul>
-      <div className="flex">
+
+      {/* <div className="flex">
         {products.prev && (
           <button
             className="p-1 mx-1 bg-gray-100 border cursor-pointer rounded-sm"
@@ -60,7 +72,7 @@ const ProductList = () => {
             Next{" "}
           </button>
         )}
-      </div>
+      </div> */}
     </div>
   );
 };
