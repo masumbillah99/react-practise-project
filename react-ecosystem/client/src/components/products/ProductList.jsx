@@ -28,7 +28,7 @@ const ProductList = () => {
   if (error) return <div>An error occured: {error.message}</div>;
 
   return (
-    <div className="flex flex-col justify-center items-center w-3/5">
+    <div className="flex flex-col justify-center items-center w-3/5 xl:ml-80">
       <h2 className="text-3xl my-2">Product List</h2>
       <ul className="flex flex-wrap justify-center items-center">
         {products &&

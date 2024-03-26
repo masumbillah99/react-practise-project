@@ -16,11 +16,12 @@ const ProductDetails = () => {
   const { data: product } = useQuery({
     queryKey: ["products", productId],
     queryFn: retrieveProducts,
+    retry: false,
   });
 
   return (
-    <div className="w-1/5">
-      <h1 className="text-3xl my-2">Product Details</h1>
+    <div className="w-1/5 xl:fixed xl:right-32 xl:top-5">
+      <h1 className="text-3xl text-center my-2">Product Details</h1>
       <div className="border bg-gray-100 p-2 text-base text-center rounded flex flex-col">
         <img
           src={product?.thumbnail}
