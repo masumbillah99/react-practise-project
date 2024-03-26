@@ -9,22 +9,6 @@
       "thumbnail": "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg"
     },
     {
-      "id": "2",
-      "title": "iPhone X",
-      "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
-      "price": 899,
-      "rating": 4.44,
-      "thumbnail": "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg"
-    },
-    {
-      "id": "3",
-      "title": "Samsung Universe 9",
-      "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
-      "price": 1249,
-      "rating": 4.09,
-      "thumbnail": "https://cdn.dummyjson.com/product-images/3/thumbnail.jpg"
-    },
-    {
       "id": "4",
       "title": "OPPOF19",
       "description": "OPPO F19 is officially announced on April 2021.",
@@ -239,14 +223,6 @@
       "price": 30,
       "rating": 4.92,
       "thumbnail": "https://cdn.dummyjson.com/product-images/30/thumbnail.jpg"
-    },
-    {
-      "id": "bbe36a9e-983a-4efe-8e75-17a8642867d9",
-      "title": "Galaxy A21",
-      "description": "this is a old version",
-      "price": "59",
-      "rating": 5,
-      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLMldiRNXMhRlkX_xmE5b-EODnf_uhHr9CZFBm19-x0g&s"
     },
     {
       "id": "20b91530-6209-42e8-97fd-edd8b23ce5c2",
