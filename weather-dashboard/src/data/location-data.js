@@ -37,6 +37,7 @@ const getLocation = () => {
   return data;
 };
 
+// fetch local location data
 const getLocationByName = (location) => {
   if (!location) return null;
 
@@ -54,4 +55,43 @@ const getLocationByName = (location) => {
   }
 };
 
-export { getLocation, getLocationByName };
+// fetch world all location data from api
+const getLocationDataByName = async (location) => {
+  if (!location) return null;
+
+  try {
+    const response = await fetch(
+      `${import.meta.env.VITE_WEATHER_API}?q=${location}&appid=${
+        import.meta.env.VITE_WEATHER_API_KEY
+      }`
+    );
+
+    if (!response.ok) {
+      const errMsg = `Failed to fetch weather data: ${response.status}`;
+      throw new Error(errMsg);
+    }
+
+    const data = await response.json();
+    if (data) {
+      // Extract relevant location information from the weather data
+      const locationData = {
+        location: data.name,
+        latitude: data.coord.lat,
+        longitude: data.coord.lon,
+      };
+
+      return locationData;
+    } else {
+      const defaultLocation = {
+        location: "",
+        latitude: 0,
+        longitude: 0,
+      };
+      return defaultLocation;
+    }
+  } catch (error) {
+    return error;
+  }
+};
+
+export { getLocation, getLocationByName, getLocationDataByName };

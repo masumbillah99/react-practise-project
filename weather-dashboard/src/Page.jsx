@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import Header from "./components/header/Header";
 import WeatherBoard from "./components/weather/WeatherBoard";
-
+import { WeatherContext } from "./context";
 import ClearSkyImage from "./assets/backgrounds/clear-sky.jpg";
 import FewCloudsImage from "./assets/backgrounds/few-clouds.jpg";
 import MistImage from "./assets/backgrounds/mist.jpeg";
@@ -10,7 +10,6 @@ import ScatterdCloudsImage from "./assets/backgrounds/scattered-clouds.jpg";
 import SnowImage from "./assets/backgrounds/sunny.jpg";
 import ThunderStormImage from "./assets/backgrounds/thunderstorm.jpg";
 import WinterImage from "./assets/backgrounds/winter.jpg";
-import { WeatherContext } from "./context";
 
 export default function Page() {
   const { weatherData, loading } = useContext(WeatherContext);
@@ -48,8 +47,8 @@ export default function Page() {
   return (
     <>
       {loading.state ? (
-        <div className="flex bg-gray-300 w-96 mx-auto mt-16">
-          <p className="my-auto text-center text-3xl font-semibold text-red-500">
+        <div className="flex bg-[#0C527E] p-5 w-96 mx-auto mt-16">
+          <p className="my-auto text-center text-3xl text-white font-semibold">
             {loading.message}
           </p>
         </div>

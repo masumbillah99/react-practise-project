@@ -9,7 +9,6 @@ import { LocationContext } from "../context";
 
  * 2. আমরা হুকের মধ্যে ডাটা মডেলিং বা Data structure করতে পারি
 
-  
 */
 
 const useWeather = () => {
@@ -30,9 +29,6 @@ const useWeather = () => {
   const [loading, setLoading] = useState({ state: false, message: "" });
   const { searchLocation } = useContext(LocationContext);
 
-  // console.log("from use weather data");
-  // console.log(searchLocation);
-
   // asynchronous calls for response
   const fetchWeatherData = async (lat, lon) => {
     try {
@@ -43,7 +39,7 @@ const useWeather = () => {
       });
 
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${
+        `${import.meta.env.VITE_WEATHER_API}?lat=${lat}&lon=${lon}&appid=${
           import.meta.env.VITE_WEATHER_API_KEY
         }&units=metric`
       );
