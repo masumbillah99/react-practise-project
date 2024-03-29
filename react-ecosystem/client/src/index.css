@@ -10,3 +10,10 @@
 .demo {
   @apply flex items-center gap-3;
 }
+
+.error {
+  background-color: red;
+  color: white;
+  padding: 7px;
+  width: 500px;
+}

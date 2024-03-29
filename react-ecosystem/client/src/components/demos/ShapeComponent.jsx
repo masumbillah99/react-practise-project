@@ -1,6 +1,7 @@
 import { Suspense, useState } from "react";
 import demos from "../../data/demos-data";
 import importDemos from "../../utils/importDemos";
+import { ErrorBoundary } from "react-error-boundary";
 // import ColorDemo from "./ColorDemo";
 // import ShapeDemo from "./ShapeDemo";
 // import SizeDemo from "./SizeDemo";
@@ -49,7 +50,15 @@ const ShapeComponent = () => {
       </div>
 
       <div>
-        <Suspense fallback={<p>Loading Demos...</p>}>{selectedDemo}</Suspense>
+        <ErrorBoundary
+          fallback={
+            <div className="error">
+              An error occured for demos data loading...
+            </div>
+          }
+        >
+          <Suspense fallback={<p>Loading Demos...</p>}>{selectedDemo}</Suspense>
+        </ErrorBoundary>
         {/* {selectedDemo === "size" && <SizeDemo />}
         {selectedDemo === "color" && <ColorDemo />}
         {selectedDemo === "shape" && <ShapeDemo />} */}

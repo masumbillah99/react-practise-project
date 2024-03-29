@@ -1,7 +1,14 @@
 import { Circle } from "react-feather";
 
 const ColorDemo = () => {
-  const colors = ["#A63578", "teal", "#000000", "orange", "read", "green"];
+  const colors = [
+    "#A63578",
+    "#008080",
+    "#000000",
+    "#FFA500",
+    "#FF0000",
+    "#008000",
+  ];
 
   return (
     <>
