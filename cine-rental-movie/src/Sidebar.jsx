@@ -55,7 +55,7 @@ const Sidebar = ({ selectedType, setSelectedType }) => {
             <span>Coming Soon</span>
           </button>
         </li>
-        <li>
+        {/* <li>
           <button
             className={`flex items-center space-x-2 w-[170px] px-5 py-3.5 rounded-lg ${
               selectedType === "watch_later" && "bg-primary text-black"
@@ -80,7 +80,7 @@ const Sidebar = ({ selectedType, setSelectedType }) => {
             />
             <span>Favourites</span>
           </button>
-        </li>
+        </li> */}
       </ul>
     </aside>
   );

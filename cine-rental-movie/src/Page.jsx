@@ -18,11 +18,6 @@ const Page = () => {
     movie.type.includes(selectedType)
   );
 
-  // Toggle dark mode class on body element
-  // document.body.classList.toggle("dark-mode", darkMode);
-
-  // animation for sidebar
-
   return (
     <div className={`h-full w-full ${darkMode ? "dark" : "light"}`}>
       <Header />

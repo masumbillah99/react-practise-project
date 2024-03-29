@@ -7,6 +7,7 @@ import { useState } from "react";
 import CartDetails from "./cine/CartDetails";
 import { useContext } from "react";
 import { MovieContext, ThemeContext } from "./context";
+import { motion } from "framer-motion";
 
 const Header = () => {
   const [showCart, setShowCart] = useState(false);
@@ -35,7 +36,14 @@ const Header = () => {
                 setDarkMode((darkMode) => !darkMode);
               }}
             >
-              <img src={darkMode ? sun : moon} width="24" height="24" alt="" />
+              <motion.img
+                src={darkMode ? sun : moon}
+                width="24"
+                height="24"
+                alt=""
+                whileTap={{ rotate: [180, 90, 45, 0] }}
+                transition={{ duration: 0.3 }}
+              />
             </button>
           </li>
           <li>

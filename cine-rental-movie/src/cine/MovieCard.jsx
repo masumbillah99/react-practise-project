@@ -1,5 +1,4 @@
 import { getImgUrl } from "../utils/cine-utility";
-// import tagImg from "../assets/tag.svg";
 import Rating from "./Rating";
 import { useState } from "react";
 import MovieDetailsModal from "./MovieDetailsModal";
@@ -7,8 +6,8 @@ import { useContext } from "react";
 import { MovieContext } from "../context";
 import { toast } from "react-toastify";
 import { IoMdCart } from "react-icons/io";
-// import { FaBookmark } from "react-icons/fa";
 import { MdFavorite } from "react-icons/md";
+import { motion, AnimatePresence } from "framer-motion";
 
 const MovieCard = ({ movie }) => {
   const [showModal, setShowModal] = useState(false);
@@ -70,15 +69,40 @@ const MovieCard = ({ movie }) => {
 
   return (
     <>
-      {showModal && (
-        <MovieDetailsModal
-          movie={selectedMovie}
-          onClose={() => setShowModal(false)}
-          onCartAdd={handleAddToCart}
-        />
-      )}
+      <AnimatePresence>
+        {showModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              zIndex: 9999,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <MovieDetailsModal
+              movie={selectedMovie}
+              onClose={() => setShowModal(false)}
+              onCartAdd={handleAddToCart}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <figure className="relative p-4 border border-black/10 shadow-sm dark:border-white/10 rounded-xl lg:h-[530px]">
-        <a href="#" onClick={() => handleModalOpen(movie)}>
+        <motion.a
+          href="#"
+          onClick={() => handleModalOpen(movie)}
+          transition={{ duration: 0.3 }}
+        >
           <div className="relative">
             <img
               className="w-full object-cover lg:h-[330px]"
@@ -86,10 +110,10 @@ const MovieCard = ({ movie }) => {
               alt={movie.title}
             />
             <button
-              className="absolute top-1 right-1"
+              // className="absolute top-1 right-1"
               onClick={(evt) => handleFavorite(evt, movie)}
             >
-              <MdFavorite className="text-xl" color={"#E60023"} />
+              {/* <MdFavorite className="text-xl" color={"#E60023"} /> */}
             </button>
           </div>
           <figcaption className="pt-4 text-left">
@@ -107,7 +131,7 @@ const MovieCard = ({ movie }) => {
               <span>${movie.price} | Add to Cart</span>
             </button>
           </figcaption>
-        </a>
+        </motion.a>
       </figure>
     </>
   );
