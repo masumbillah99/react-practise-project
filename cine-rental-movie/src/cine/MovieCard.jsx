@@ -7,7 +7,13 @@ import { MovieContext } from "../context";
 import { toast } from "react-toastify";
 import { IoMdCart } from "react-icons/io";
 import { MdFavorite } from "react-icons/md";
-import { motion, AnimatePresence } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  LazyMotion,
+  m,
+  domAnimation,
+} from "framer-motion";
 
 const MovieCard = ({ movie }) => {
   const [showModal, setShowModal] = useState(false);
@@ -67,6 +73,8 @@ const MovieCard = ({ movie }) => {
     }
   };
 
+  const loadMovieCard = import("./MovieCard").then((res) => res.default);
+
   return (
     <>
       <AnimatePresence>
@@ -97,42 +105,48 @@ const MovieCard = ({ movie }) => {
         )}
       </AnimatePresence>
 
-      <figure className="relative p-4 border border-black/10 shadow-sm dark:border-white/10 rounded-xl lg:h-[530px]">
-        <motion.a
-          href="#"
-          onClick={() => handleModalOpen(movie)}
-          transition={{ duration: 0.3 }}
+      <LazyMotion features={domAnimation}>
+        <m.figure
+          className="relative p-4 border border-black/10 shadow-sm dark:border-white/10 rounded-xl lg:h-[530px]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
         >
-          <div className="relative">
-            <img
-              className="w-full object-cover lg:h-[330px]"
-              src={getImgUrl(movie.cover)}
-              alt={movie.title}
-            />
-            <button
-              // className="absolute top-1 right-1"
-              onClick={(evt) => handleFavorite(evt, movie)}
-            >
-              {/* <MdFavorite className="text-xl" color={"#E60023"} /> */}
-            </button>
-          </div>
-          <figcaption className="pt-4 text-left">
-            <h3 className="text-xl mb-1">{movie.title}</h3>
-            <p className="text-[#575A6E] text-sm mb-2">{movie.genre}</p>
-            <div className="flex items-center space-x-1 mb-5">
-              <Rating value={movie.rating} />
+          <motion.a
+            href="#"
+            onClick={() => handleModalOpen(movie)}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="relative">
+              <img
+                className="w-full object-cover lg:h-[330px]"
+                src={getImgUrl(movie.cover)}
+                alt={movie.title}
+              />
+              <button
+                // className="absolute top-1 right-1"
+                onClick={(evt) => handleFavorite(evt, movie)}
+              >
+                {/* <MdFavorite className="text-xl" color={"#E60023"} /> */}
+              </button>
             </div>
-            <button
-              className="lg:absolute bottom-3 bg-primary rounded-lg py-2 px-5 flex items-center justify-center gap-2 text-[#171923] font-semibold text-sm"
-              onClick={(evt) => handleAddToCart(evt, movie)}
-            >
-              {/* <img src={tagImg} alt="" /> */}
-              <IoMdCart width="24" height="24" />
-              <span>${movie.price} | Add to Cart</span>
-            </button>
-          </figcaption>
-        </motion.a>
-      </figure>
+            <figcaption className="pt-4 text-left">
+              <h3 className="text-xl mb-1">{movie.title}</h3>
+              <p className="text-[#575A6E] text-sm mb-2">{movie.genre}</p>
+              <div className="flex items-center space-x-1 mb-5">
+                <Rating value={movie.rating} />
+              </div>
+              <button
+                className="lg:absolute bottom-3 bg-primary rounded-lg py-2 px-5 flex items-center justify-center gap-2 text-[#171923] font-semibold text-sm"
+                onClick={(evt) => handleAddToCart(evt, movie)}
+              >
+                {/* <img src={tagImg} alt="" /> */}
+                <IoMdCart width="24" height="24" />
+                <span>${movie.price} | Add to Cart</span>
+              </button>
+            </figcaption>
+          </motion.a>
+        </m.figure>
+      </LazyMotion>
     </>
   );
 };

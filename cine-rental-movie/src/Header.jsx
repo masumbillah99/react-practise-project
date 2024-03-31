@@ -41,15 +41,16 @@ const Header = () => {
                 width="24"
                 height="24"
                 alt=""
-                whileTap={{ rotate: [180, 90, 45, 0] }}
+                whileTap={{ rotate: [360, 180, 90, -360] }}
                 transition={{ duration: 0.3 }}
               />
             </button>
           </li>
           <li>
-            <button
+            <motion.button
               className="bg-primary/20 dark:bg-primary/[7%] rounded-lg backdrop-blur-[2px] p-1 inline-block"
               onClick={() => setShowCart(true)}
+              transition={{ duration: 0.3 }}
             >
               <img src={shoppingCart} width="24" height="24" alt="" />
               {state?.cartData?.length > 0 && (
@@ -57,7 +58,7 @@ const Header = () => {
                   {state.cartData.length}
                 </span>
               )}
-            </button>
+            </motion.button>
           </li>
         </ul>
       </nav>

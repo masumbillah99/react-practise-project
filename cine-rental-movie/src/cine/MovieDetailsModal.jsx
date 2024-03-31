@@ -1,10 +1,16 @@
 import tagImg from "../assets/tag.svg";
 import { getImgUrl } from "../utils/cine-utility";
 import Rating from "./Rating";
+import { motion } from "framer-motion";
 
 const MovieDetailsModal = ({ movie, onClose, onCartAdd }) => {
   return (
-    <div className="fixed top-0 left-0 w-screen h-screen z-50 bg-black/60 backdrop-blur-sm">
+    <motion.div
+      className="fixed top-0 left-0 w-screen h-screen z-50 bg-black/60 backdrop-blur-sm"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, zIndex: 2 }}
+      transition={{ delay: 0.3, duration: 0.3 }}
+    >
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[420px] sm:max-w-[600px] lg:max-w-[984px] p-4 max-h-[90vh] overflow-auto">
         <div className="bg-white dark:bg-[#171923] shadow-md rounded-2xl sm:grid sm:grid-cols-[2fr_1fr] overflow-hidden text-left">
           <img
@@ -43,7 +49,7 @@ const MovieDetailsModal = ({ movie, onClose, onCartAdd }) => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
